@@ -12,5 +12,6 @@
             <p>投稿者: {{ post.author }}</p>
         </div>
     {% endfor %}
+    <a href="{% url 'logout' %}">ログアウト</a>
 </div>
 {% endblock content %}
