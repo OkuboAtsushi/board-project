@@ -1,6 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from .models import BoardModel
 
 
 def signup(request):
@@ -29,3 +32,9 @@ def loginfunc(request):
         else:
             return render(request, 'login.html', {})
     return render(request, 'login.html', {})
+
+
+@login_required
+def listfunc(request):
+    post_list = BoardModel.objects.all()
+    return render(request, 'list.html', {'post_list': post_list})
