@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -38,3 +38,8 @@ def loginfunc(request):
 def listfunc(request):
     post_list = BoardModel.objects.all()
     return render(request, 'list.html', {'post_list': post_list})
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
