@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3>詳細画面</h3>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>投稿者: {{ post.author }}</p>
+    <p>title: {{ post.title }}</p>
+    <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+      <p>{{ post.content }}</p>
+    </div>
+    <p>画像:</p>
+    <img src="{{ post.snsimage.url }}" width=300 height=300 alt="no img">
+  </div>
+</div>
+{% endblock content %}
