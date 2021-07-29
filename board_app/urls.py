@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import signup, loginfunc, listfunc, logoutfunc, detail
+from .views import signup, loginfunc, listfunc, logoutfunc, detail, good
 
 urlpatterns = [
     path('signup/', signup, name='signup'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('list/', listfunc, name='list'),
     path('logout/', logoutfunc, name='logout'),
     path('detail/<int:pk>', detail, name='detail'),
+    path('good/<int:pk>', good, name='good'),
 ]

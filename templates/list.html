@@ -10,6 +10,7 @@
         <div class="alert alert-primary" role="alert">
             <p>タイトル: {{ post.title }}</p>
             <p>投稿者: {{ post.author }}</p>
+            <a href="{% url 'good' post.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button">いいね:{{post.good}}</a>
         </div>
     {% endfor %}
     <a href="{% url 'logout' %}">ログアウト</a>
