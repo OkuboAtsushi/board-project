@@ -49,3 +49,10 @@ def logoutfunc(request):
 def detail(request, pk):
     post = get_object_or_404(BoardModel, pk=pk)
     return render(request, 'detail.html', {'post': post})
+
+
+def good(request, pk):
+    post = get_object_or_404(BoardModel, pk=pk)
+    post.good += 1
+    post.save()
+    return redirect('list')
