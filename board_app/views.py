@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 from .models import BoardModel
 
@@ -69,3 +71,10 @@ def read(request, pk):
     post.read_user_ids = post.read_user_ids + ' ' + str(login_user_id)
     post.save()
     return redirect('list')
+
+
+class CreatePost(CreateView):
+    template_name = 'create.html'
+    model = BoardModel
+    fields = ['title', 'author', 'content', 'snsimage']
+    success_url = reverse_lazy('list')
