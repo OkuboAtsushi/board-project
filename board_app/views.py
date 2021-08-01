@@ -1,7 +1,7 @@
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import BoardModel
 
@@ -54,5 +54,18 @@ def detail(request, pk):
 def good(request, pk):
     post = get_object_or_404(BoardModel, pk=pk)
     post.good += 1
+    post.save()
+    return redirect('list')
+
+
+def read(request, pk):
+    post = get_object_or_404(BoardModel, pk=pk)
+    login_user_id = int(request.user.id)
+    read_user_ids = post.read_user_ids.split()
+    read_user_ids = [int(id) for id in read_user_ids]
+    if login_user_id in read_user_ids:
+        return redirect('list')
+    post.read += 1
+    post.read_user_ids = post.read_user_ids + ' ' + str(login_user_id)
     post.save()
     return redirect('list')
