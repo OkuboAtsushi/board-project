@@ -6,6 +6,7 @@
 
 {% block content %}
 <div class="container">
+    <a href="{% url 'create' %}">投稿画面</a>
     {% for post in post_list %}
         <div class="alert alert-primary" role="alert">
             <a href="{% url 'detail' post.pk %}" ><p>タイトル: {{ post.title }}</p></a>

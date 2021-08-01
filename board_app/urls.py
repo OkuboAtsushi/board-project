@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import signup, loginfunc, listfunc, logoutfunc, detail, good, read
+from .views import signup, loginfunc, listfunc, \
+    logoutfunc, detail, good, read, CreatePost
 
 urlpatterns = [
     path('signup/', signup, name='signup'),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('detail/<int:pk>', detail, name='detail'),
     path('good/<int:pk>', good, name='good'),
     path('read/<int:pk>', read, name='read'),
+    path('create/', CreatePost.as_view(), name='create'),
 ]
