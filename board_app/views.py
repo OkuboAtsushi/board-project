@@ -56,3 +56,16 @@ def good(request, pk):
     post.good += 1
     post.save()
     return redirect('list')
+
+
+def read(request, pk):
+    post = get_object_or_404(BoardModel, pk=pk)
+    login_user_id = int(request.user.id)
+    read_user_ids = post.read_user_ids.split()
+    read_user_ids = [int(id) for id in read_user_ids]
+    if login_user_id in read_user_ids:
+        return redirect('list')
+    post.read += 1
+    post.read_user_ids = post.read_user_ids + ' ' + str(login_user_id)
+    post.save()
+    return redirect('list')

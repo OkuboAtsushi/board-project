@@ -15,6 +15,7 @@
     <p>画像:</p>
     <p><img src="{{ post.snsimage.url }}" width=300 height=300 alt="no img"></p>
     <a href="{% url "good" post.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">いいね:{{post.good}}</a>
+    <a href="{% url "read" post.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">既読:{{post.read}}</a>
   </div>
 </div>
 {% endblock content %}
