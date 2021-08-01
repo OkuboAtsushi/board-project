@@ -8,4 +8,4 @@ class BoardModel(models.Model):
     snsimage = models.ImageField(upload_to='')
     good = models.IntegerField(null=True, blank=True, default=0)
     read = models.IntegerField(null=True, blank=True, default=0)
-    readtext = models.TextField(null=True, blank=True, default='')
+    read_user_ids = models.TextField(null=True, blank=True, default='')
