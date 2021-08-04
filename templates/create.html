@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <h1>新規作成画面</h1>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <p>title: <input type="text" name="title"></p>
+    <p>content: <input type="text" name="content"></p>
+    <p><input type="file" name="snsimage"></p>
+    <input type="hidden" name="author" value="{{ user.username }}">
+
+    <input type="submit" value="投稿する">
+  </form>
+  <a href="{% url 'list' %}">一覧画面へ</a>
+</div>
+{% else %}
+<div class="container">
+  <p>please login</p>
+  <a href="{% url 'list' %}">ログイン画面へ</a>
+</div>
+{% endif %}
+{% endblock content %}

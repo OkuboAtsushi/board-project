@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<body class="text-center">
+  <main class='form-signin'>
+    <form method="POST">{% csrf_token %}
+      <h1 class="h3 mb-3 font-weight-normal">ログイン</h1>
+      <label for="floatingInput" class="sr-only">ユーザー名</label>
+      <input type="text" id="floatingInput" class="form-control" placeholder="ユーザー名" name='username' required autofocus>
+      <label for="floatingPassword" class="sr-only">Password</label>
+      <input type="password" id="floatingPassword" class="form-control" placeholder="Password" name='password' required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
+    </form>
+    <a href="{% url 'signup' %}">ユーザー登録画面</a>
+  </main>
+</body>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3>詳細画面</h3>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>投稿者: {{ post.author }}</p>
+    <p>title: {{ post.title }}</p>
+    <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+      <p>{{ post.content }}</p>
+    </div>
+    <p>画像:</p>
+    <p><img src="{{ post.snsimage.url }}" width=300 height=300 alt="no img"></p>
+    <a href="{% url 'good' post.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">いいね:{{post.good}}</a>
+    <a href="{% url 'read' post.pk %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">既読:{{post.read}}</a>
+  </div>
+  <a href="{% url 'list' %}">一覧画面へ</a>
+</div>
+{% endblock content %}
